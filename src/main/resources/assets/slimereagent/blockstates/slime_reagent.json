@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "slimereagent:block/slime_reagent"
+    }
+  }
+}

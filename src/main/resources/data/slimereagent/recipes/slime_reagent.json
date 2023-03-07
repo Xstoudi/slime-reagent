@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slimereagent",
+  "key": {
+    "g": {
+      "tag": "forge:gunpowder"
+    },
+    "r": {
+      "tag": "forge:dusts/redstone"
+    }
+  },
+  "pattern": [
+    "grg",
+    "rgr",
+    "grg"
+  ],
+  "result": {
+    "item": "slimereagent:slime_reagent"
+  }
+}
