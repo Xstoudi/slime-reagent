@@ -10,11 +10,13 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
+import java.util.Random;
+
 @Mod(SlimeReagent.MODID)
 public class SlimeReagent {
 
     public static final String MODID = "slimereagent";
+    public static final Random RANDOM = new Random();
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public SlimeReagent() {
