@@ -2,6 +2,8 @@ package io.stouder.slimereagent;
 
 import io.stouder.slimereagent.blockentities.SlimeReagentBlockEntity;
 import io.stouder.slimereagent.blocks.SlimeReagentBlock;
+import io.stouder.slimereagent.items.SlimeDetector;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -9,6 +11,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.network.NetworkRegistry;
+import net.minecraftforge.network.simple.SimpleChannel;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -29,7 +33,10 @@ public class Registration {
     public static final RegistryObject<Item> SLIME_REAGENT_ITEM = fromBlock(SLIME_REAGENT);
     public static final RegistryObject<BlockEntityType<SlimeReagentBlockEntity>> SLIME_REAGENT_BLOCK_ENTITY = BLOCK_ENTITIES.register("slime_reagent", () -> BlockEntityType.Builder.of(SlimeReagentBlockEntity::new, SLIME_REAGENT.get()).build(null));
 
+    public static final RegistryObject<Item> SLIME_DETECTOR = ITEMS.register("slime_detector", SlimeDetector::new);
+
     private static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     }
+
 }

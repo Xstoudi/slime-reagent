@@ -2,6 +2,7 @@ package io.stouder.slimereagent.blockentities;
 
 import io.stouder.slimereagent.Registration;
 import io.stouder.slimereagent.SlimeReagent;
+import io.stouder.slimereagent.helpers.Slimy;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -26,11 +27,10 @@ public class SlimeReagentBlockEntity extends BlockEntity {
         super(Registration.SLIME_REAGENT_BLOCK_ENTITY.get(), pos, state);
     }
 
-    private void checkSlimePresence(ServerLevel level, BlockPos blockPos) {
+    private void checkSlimePresence(ServerLevel level, BlockPos pos) {
         if(this.checked) return;
 
-        ChunkPos chunkPos = new ChunkPos(blockPos);
-        this.slimePresent = WorldgenRandom.seedSlimeChunk(chunkPos.x, chunkPos.z, ((WorldGenLevel)level).getSeed(), 987234911L).nextInt(10) == 0;
+        this.slimePresent = Slimy.checkSlimePresence(level, pos);
         this.checked = true;
     }
 
