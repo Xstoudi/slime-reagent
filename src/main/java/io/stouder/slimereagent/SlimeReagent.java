@@ -6,8 +6,10 @@ import io.stouder.slimereagent.blocks.ModBlocks;
 import io.stouder.slimereagent.items.ModItems;
 import io.stouder.slimereagent.items.custom.SlimeDetector;
 import io.stouder.slimereagent.networking.Packets;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -37,24 +39,33 @@ public class SlimeReagent {
         modEventBus.addListener(this::onClientSetup);
         modEventBus.addListener(this::onServerSetup);
 
+        modEventBus.addListener(this::onRegisterCreativeTab);
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    public void onCommonSetup(FMLCommonSetupEvent event) {
+    private void onCommonSetup(FMLCommonSetupEvent event) {
         LOGGER.info("SLIMY Common setup");
         event.enqueueWork(Packets::register);
     }
 
-    public void onClientSetup(FMLClientSetupEvent event) {
+    private void onClientSetup(FMLClientSetupEvent event) {
         LOGGER.info("SLIMY Client setup");
     }
 
-    public void onServerSetup(FMLDedicatedServerSetupEvent event) {
+    private void onServerSetup(FMLDedicatedServerSetupEvent event) {
         LOGGER.info("SLIMY Server setup");
     }
 
+    private void onRegisterCreativeTab(CreativeModeTabEvent.BuildContents event) {
+        if(event.getTab() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.accept(ModItems.SLIME_DETECTOR);
+            event.accept(ModItems.SLIME_REAGENT_ITEM);
+        }
+    }
+
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
+    private static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             event.enqueueWork(() -> {

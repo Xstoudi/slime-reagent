@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"0": "slimereagent:items/slime_detector",
-		"particle": "slimereagent:blocks/slime_reagent"
+		"0": "slimereagent:item/slime_detector",
+		"particle": "slimereagent:block/slime_reagent"
 	},
 	"elements": [
 		{

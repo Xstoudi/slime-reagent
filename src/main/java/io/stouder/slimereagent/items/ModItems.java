@@ -23,7 +23,7 @@ public class ModItems {
     public static final RegistryObject<Item> SLIME_REAGENT_ITEM = blockItem(ModBlocks.SLIME_REAGENT);
 
     private static <B extends Block> RegistryObject<Item> blockItem(RegistryObject<B> block) {
-        return ModItems.ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
+        return ModItems.ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
 }

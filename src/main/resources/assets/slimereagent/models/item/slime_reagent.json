@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "slimereagent:items/slime_reagent"
+    "layer0": "slimereagent:item/slime_reagent"
   }
 }

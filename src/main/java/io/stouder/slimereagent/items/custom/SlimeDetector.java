@@ -9,7 +9,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -19,7 +18,7 @@ public class SlimeDetector extends Item {
     public static final String TAG_DETECTOR_ENABLED = "Enabled";
 
     public SlimeDetector() {
-        super(new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1));
+        super(new Item.Properties().stacksTo(1));
     }
 
     @Override
