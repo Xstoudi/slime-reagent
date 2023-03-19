@@ -1,20 +1,16 @@
-package io.stouder.slimereagent.blockentities;
+package io.stouder.slimereagent.blockentities.custom;
 
-import io.stouder.slimereagent.Registration;
 import io.stouder.slimereagent.SlimeReagent;
+import io.stouder.slimereagent.blockentities.ModBlockEntities;
 import io.stouder.slimereagent.helpers.Slimy;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.WorldgenRandom;
 
 public class SlimeReagentBlockEntity extends BlockEntity {
     private int timer = 0;
@@ -24,7 +20,7 @@ public class SlimeReagentBlockEntity extends BlockEntity {
     private boolean slimePresent = false;
 
     public SlimeReagentBlockEntity(BlockPos pos, BlockState state) {
-        super(Registration.SLIME_REAGENT_BLOCK_ENTITY.get(), pos, state);
+        super(ModBlockEntities.SLIME_REAGENT_BLOCK_ENTITY.get(), pos, state);
     }
 
     private void checkSlimePresence(ServerLevel level, BlockPos pos) {

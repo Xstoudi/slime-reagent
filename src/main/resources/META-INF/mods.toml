@@ -42,7 +42,7 @@ displayName="Slime Reagent" #mandatory
 
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-
+Some low tech tools to find slime chunks.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.slimereagent]] #optional
@@ -63,10 +63,4 @@ description='''
    # This version range declares a minimum of the current minecraft version up to but not including the next major version
    versionRange="[1.19.2,1.20)"
    ordering="NONE"
-   side="BOTH"
-[[dependencies.slimereagent]]
-   modId="wrapperlib"
-   mandatory=true
-   versionRange="[1.1,2.0)"
-   ordering="AFTER"
    side="BOTH"

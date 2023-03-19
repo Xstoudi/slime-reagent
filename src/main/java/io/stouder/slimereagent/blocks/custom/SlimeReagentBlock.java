@@ -1,16 +1,13 @@
-package io.stouder.slimereagent.blocks;
+package io.stouder.slimereagent.blocks.custom;
 
-import io.stouder.slimereagent.Registration;
-import io.stouder.slimereagent.blockentities.SlimeReagentBlockEntity;
+import io.stouder.slimereagent.blockentities.ModBlockEntities;
+import io.stouder.slimereagent.blockentities.custom.SlimeReagentBlockEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -59,7 +56,7 @@ public class SlimeReagentBlock extends Block implements EntityBlock, SimpleWater
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState state) {
-        return Registration.SLIME_REAGENT_BLOCK_ENTITY.get().create(blockPos, state);
+        return ModBlockEntities.SLIME_REAGENT_BLOCK_ENTITY.get().create(blockPos, state);
     }
 
     @Override
@@ -79,6 +76,6 @@ public class SlimeReagentBlock extends Block implements EntityBlock, SimpleWater
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level world, BlockState state, BlockEntityType<T> type) {
-        return type == Registration.SLIME_REAGENT_BLOCK_ENTITY.get() ? SlimeReagentBlockEntity::tick : null;
+        return type == ModBlockEntities.SLIME_REAGENT_BLOCK_ENTITY.get() ? SlimeReagentBlockEntity::tick : null;
     }
 }

@@ -3,13 +3,13 @@
   "group": "slimereagent",
   "key": {
     "g": {
-      "tag": "forge:glass_pane"
+      "item": "minecraft:glass_pane"
     },
     "b": {
-      "tag": "forge:iron_block"
+      "item": "minecraft:iron_block"
     },
     "r": {
-      "tag": "slimereagent:slime_reagent"
+      "item": "slimereagent:slime_reagent"
     }
   },
   "pattern": [

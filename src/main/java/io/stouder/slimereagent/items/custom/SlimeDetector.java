@@ -1,9 +1,9 @@
-package io.stouder.slimereagent.items;
+package io.stouder.slimereagent.items.custom;
 
-import ca.lukegrahamlandry.lib.network.NetworkWrapper;
 import io.stouder.slimereagent.SlimeReagent;
 import io.stouder.slimereagent.helpers.Slimy;
-import io.stouder.slimereagent.networking.SignalSlimeChunkPacket;
+import io.stouder.slimereagent.networking.Packets;
+import io.stouder.slimereagent.networking.packet.SignalSlimeChunkS2CPacket;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -14,33 +14,29 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-import java.util.stream.StreamSupport;
-
 public class SlimeDetector extends Item {
-    public static ResourceLocation ENABLED = new ResourceLocation(SlimeReagent.MODID, "enabled");
+    public static final ResourceLocation ENABLED = new ResourceLocation(SlimeReagent.MODID, "enabled");
+    public static final String TAG_DETECTOR_ENABLED = "Enabled";
 
     public SlimeDetector() {
-        super(new Item.Properties().tab(CreativeModeTab.TAB_MISC));
+        super(new Item.Properties().tab(CreativeModeTab.TAB_MISC).stacksTo(1));
     }
 
     @Override
-    public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int p_41407_, boolean p_41408_) {
+    public void inventoryTick(ItemStack itemStack, Level level, Entity entity, int amount, boolean inHand) {
         if(level.isClientSide) {
-            super.inventoryTick(itemStack, level, entity, p_41407_, p_41408_);
+            super.inventoryTick(itemStack, level, entity, amount, inHand);
             return;
         }
 
         ServerLevel serverLevel = (ServerLevel) level;
 
         if(entity instanceof ServerPlayer player) {
-            boolean inHand = StreamSupport.stream(player.getHandSlots().spliterator(), false).anyMatch(handItem -> handItem.is(this));
             if(!inHand) return;
 
             BlockPos blockPos = entity.getOnPos();
             boolean hasSlime = Slimy.checkSlimePresence(serverLevel, blockPos);
-            if(hasSlime) {
-                NetworkWrapper.sendToClient(player, new SignalSlimeChunkPacket());
-            }
+            Packets.sendToPlayer(new SignalSlimeChunkS2CPacket(hasSlime), player);
         }
     }
 

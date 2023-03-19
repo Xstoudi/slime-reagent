@@ -3,10 +3,10 @@
   "group": "slimereagent",
   "key": {
     "g": {
-      "tag": "forge:gunpowder"
+      "item": "minecraft:gunpowder"
     },
     "r": {
-      "tag": "forge:dusts/redstone"
+      "item": "minecraft:redstone"
     }
   },
   "pattern": [
