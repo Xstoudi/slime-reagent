@@ -1,7 +1,10 @@
 {
   "mc_versions": ["1.19.2"],
   "loader": "forge",
-  "releaseType": "alpha",
+  "releaseType": "release",
+  "curseforge": {
+    "id": "839308"
+  },
   "modrinth": {
     "id": "sc7kOy7d"
   }
